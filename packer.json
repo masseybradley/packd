@@ -1,0 +1,35 @@
+{
+  "variables": {
+    "cloud_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
+    "version": "{{env `RELEASE_DATE`}}.0.0"
+  },
+  "builders": [
+    {
+      "name": "bionic64",
+      "communicator": "ssh",
+      "source_path": "ubuntu/bionic64",
+      "box_name": "lazybit/ubuntu-bionic64-docker",
+      "provider": "virtualbox",
+      "add_force": true,
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "./playbook.yml",
+      "ansible_env_vars": [ "ANSIBLE_KEEP_REMOTE_FILES=0", "ANSIBLE_DEBUG=0"],
+      "user": "vagrant"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "vagrant-cloud",
+        "box_tag": "lazybit/ubuntu-bionic64-docker",
+        "access_token": "{{user `cloud_token`}}",
+        "version": "{{user `version`}}"
+      }
+    ]
+  ]
+}
