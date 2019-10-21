@@ -4,4 +4,4 @@
 
 The `packer` `virtualbox` builder extends the official `ubuntu/bionic64` image with [`docker`](https://docs.docker.com/install/) and [`docker-compose`](https://docs.docker.com/compose/install/) using the [`ansible` provisioner](http://packer.io/docs/provisioners/ansible.html).
 
-Artifacts are tagged `lazybit/bionic64-docker` and released to Vagrant Cloud using a `{{ date }}.<major>.<minor>` version scheme.
+Artifacts are tagged `lazybit/ubuntu-bionic64-docker` and released to Vagrant Cloud using a `$(date +%Y%M%d).<minor_version>.<patch_version>` version scheme.
