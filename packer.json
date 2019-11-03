@@ -1,7 +1,7 @@
 {
   "variables": {
     "cloud_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
-    "version": "{{env `RELEASE_DATE`}}.0.0"
+    "version": "{{env `RELEASE_DATE`}}"
   },
   "builders": [
     {
